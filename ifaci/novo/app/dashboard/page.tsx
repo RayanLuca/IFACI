@@ -3,9 +3,32 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
+type Dispositivo = {
+  id: number
+  nome: string
+  status: string
+  sensores: {
+    temperatura: number
+    pressao: number
+    umidade: number
+    presenca: boolean
+    rele: boolean
+  }
+}
+
 export default function DashboardDispositivo() {
-  const [dispositivos, setDispositivos] = useState<any[]>([])
+  const [dispositivos, setDispositivos] = useState<Dispositivo[]>([])
   const [loading, setLoading] = useState(false)
+  const [editando, setEditando] = useState<Dispositivo | null>(null)
+
+  const [nome, setNome] = useState("")
+  const [status, setStatus] = useState("offline")
+  const [temperatura, setTemperatura] = useState(0)
+  const [pressao, setPressao] = useState(0)
+  const [umidade, setUmidade] = useState(0)
+  const [presenca, setPresenca] = useState(false)
+  const [rele, setRele] = useState(false)
+
   const router = useRouter()
 
   async function carregarDados() {
@@ -20,9 +43,7 @@ export default function DashboardDispositivo() {
 
   useEffect(() => {
     carregarDados()
-
     const intervalo = setInterval(carregarDados, 3000)
-
     return () => clearInterval(intervalo)
   }, [])
 
@@ -73,6 +94,66 @@ export default function DashboardDispositivo() {
       await carregarDados()
     } catch (err) {
       console.error("Erro ao adicionar dispositivo:", err)
+    }
+
+    setLoading(false)
+  }
+
+  function abrirEdicao(dados: Dispositivo) {
+    setEditando(dados)
+    setNome(dados.nome)
+    setStatus(dados.status)
+    setTemperatura(dados.sensores.temperatura)
+    setPressao(dados.sensores.pressao)
+    setUmidade(dados.sensores.umidade)
+    setPresenca(dados.sensores.presenca)
+    setRele(dados.sensores.rele)
+  }
+
+  async function atualizarDispositivo() {
+    if (!editando) return
+
+    setLoading(true)
+
+    try {
+      await fetch(`http://localhost:8080/dispositivos/${editando.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nome,
+          status,
+          sensores: {
+            temperatura,
+            pressao,
+            umidade,
+            presenca,
+            rele
+          }
+        })
+      })
+
+      setEditando(null)
+      await carregarDados()
+    } catch (err) {
+      console.error("Erro ao atualizar dispositivo:", err)
+    }
+
+    setLoading(false)
+  }
+
+  async function deletarDispositivo(id: number) {
+    setLoading(true)
+
+    try {
+      await fetch(`http://localhost:8080/dispositivos/${id}`, {
+        method: "DELETE"
+      })
+
+      await carregarDados()
+    } catch (err) {
+      console.error("Erro ao deletar dispositivo:", err)
     }
 
     setLoading(false)
@@ -186,7 +267,7 @@ export default function DashboardDispositivo() {
                   </button>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 mb-2">
                   <button
                     onClick={() =>
                       acao("http://localhost:8080/conexao", {
@@ -213,6 +294,24 @@ export default function DashboardDispositivo() {
                     OFFLINE
                   </button>
                 </div>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => abrirEdicao(dados)}
+                    disabled={loading}
+                    className="flex-1 border border-purple-500 text-purple-500 py-1 text-xs hover:bg-purple-500 hover:text-black transition disabled:opacity-50"
+                  >
+                    ATUALIZAR
+                  </button>
+
+                  <button
+                    onClick={() => deletarDispositivo(dados.id)}
+                    disabled={loading}
+                    className="flex-1 border border-red-700 text-red-500 py-1 text-xs hover:bg-red-700 hover:text-white transition disabled:opacity-50"
+                  >
+                    DELETAR
+                  </button>
+                </div>
               </div>
             )
           })}
@@ -224,6 +323,92 @@ export default function DashboardDispositivo() {
           </p>
         )}
       </div>
+
+      {editando && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-neutral-800 border border-gray-700 rounded-2xl p-6 w-full max-w-md">
+            <h2 className="text-xl font-bold mb-5">
+              Atualizar Dispositivo
+            </h2>
+
+            <div className="space-y-3">
+              <input
+                value={nome}
+                onChange={e => setNome(e.target.value)}
+                placeholder="Nome do dispositivo"
+                className="w-full p-3 rounded bg-neutral-900 border border-gray-700 outline-none"
+              />
+
+              <select
+                value={status}
+                onChange={e => setStatus(e.target.value)}
+                className="w-full p-3 rounded bg-neutral-900 border border-gray-700 outline-none"
+              >
+                <option value="online">online</option>
+                <option value="offline">offline</option>
+              </select>
+
+              <input
+                type="number"
+                value={temperatura}
+                onChange={e => setTemperatura(Number(e.target.value))}
+                placeholder="Temperatura"
+                className="w-full p-3 rounded bg-neutral-900 border border-gray-700 outline-none"
+              />
+
+              <input
+                type="number"
+                value={pressao}
+                onChange={e => setPressao(Number(e.target.value))}
+                placeholder="Pressão"
+                className="w-full p-3 rounded bg-neutral-900 border border-gray-700 outline-none"
+              />
+
+              <input
+                type="number"
+                value={umidade}
+                onChange={e => setUmidade(Number(e.target.value))}
+                placeholder="Umidade"
+                className="w-full p-3 rounded bg-neutral-900 border border-gray-700 outline-none"
+              />
+
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={presenca}
+                  onChange={e => setPresenca(e.target.checked)}
+                />
+                Presença detectada
+              </label>
+
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={rele}
+                  onChange={e => setRele(e.target.checked)}
+                />
+                Relé ligado
+              </label>
+            </div>
+
+            <div className="flex gap-3 mt-6">
+              <button
+                onClick={atualizarDispositivo}
+                className="flex-1 bg-green-600 hover:bg-green-700 p-3 rounded font-semibold transition"
+              >
+                Salvar
+              </button>
+
+              <button
+                onClick={() => setEditando(null)}
+                className="flex-1 bg-red-600 hover:bg-red-700 p-3 rounded font-semibold transition"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

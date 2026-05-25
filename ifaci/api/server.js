@@ -10,21 +10,30 @@ api.use(cors())
 // 👤 USUÁRIOS
 // =========================
 
-const dados = []
-let id = 0
+let dados = []
+let idUsuario = 0
 
 api.get("/usuarios", (req, res) => {
   res.status(200).send(dados)
 })
 
 api.post("/novoUsuario", (req, res) => {
-  id++
+  const { nome_completo, email, senha } = req.body
+
+  if (!nome_completo || !email || !senha) {
+    return res.status(400).send({
+      code: 400,
+      msg: "Preencha nome_completo, email e senha."
+    })
+  }
+
+  idUsuario++
 
   const user = {
-    id,
-    nome_completo: req.body.nome_completo,
-    email: req.body.email,
-    senha: req.body.senha
+    id: idUsuario,
+    nome_completo,
+    email,
+    senha
   }
 
   dados.push(user)
@@ -33,6 +42,28 @@ api.post("/novoUsuario", (req, res) => {
     code: 201,
     msg: "Usuário criado com sucesso!",
     user
+  })
+})
+
+api.put("/usuarios/:id", (req, res) => {
+  const idParam = Number(req.params.id)
+  const usuario = dados.find(user => user.id === idParam)
+
+  if (!usuario) {
+    return res.status(404).send({
+      code: 404,
+      msg: "Usuário não encontrado"
+    })
+  }
+
+  usuario.nome_completo = req.body.nome_completo ?? usuario.nome_completo
+  usuario.email = req.body.email ?? usuario.email
+  usuario.senha = req.body.senha ?? usuario.senha
+
+  res.status(200).send({
+    code: 200,
+    msg: "Usuário atualizado com sucesso!",
+    user: usuario
   })
 })
 
@@ -52,31 +83,6 @@ api.delete("/usuarios/:id", (req, res) => {
   res.status(200).send({
     code: 200,
     msg: "Usuário deletado com sucesso!"
-  })
-})
-
-api.put("/usuarios/:id", (req, res) => {
-  const idParam = Number(req.params.id)
-  const index = dados.findIndex(user => user.id === idParam)
-
-  if (index === -1) {
-    return res.status(404).send({
-      code: 404,
-      msg: "Usuário não encontrado"
-    })
-  }
-
-  dados[index] = {
-    id: idParam,
-    nome_completo: req.body.nome_completo,
-    email: req.body.email,
-    senha: req.body.senha
-  }
-
-  res.status(200).send({
-    code: 200,
-    msg: "Usuário editado com sucesso!",
-    user: dados[index]
   })
 })
 
@@ -150,7 +156,47 @@ api.post("/dispositivos", (req, res) => {
 
   dispositivos.push(novo)
 
-  res.status(201).send(novo)
+  res.status(201).send({
+    code: 201,
+    msg: "Dispositivo criado com sucesso!",
+    dispositivo: novo
+  })
+})
+
+api.put("/dispositivos/:id", (req, res) => {
+  const id = Number(req.params.id)
+  const dispositivo = dispositivos.find(d => d.id === id)
+
+  if (!dispositivo) {
+    return res.status(404).send({
+      code: 404,
+      msg: "Dispositivo não encontrado"
+    })
+  }
+
+  dispositivo.nome = req.body.nome ?? dispositivo.nome
+  dispositivo.status = req.body.status ?? dispositivo.status
+
+  dispositivo.sensores.temperatura =
+    req.body.sensores?.temperatura ?? dispositivo.sensores.temperatura
+
+  dispositivo.sensores.pressao =
+    req.body.sensores?.pressao ?? dispositivo.sensores.pressao
+
+  dispositivo.sensores.umidade =
+    req.body.sensores?.umidade ?? dispositivo.sensores.umidade
+
+  dispositivo.sensores.presenca =
+    req.body.sensores?.presenca ?? dispositivo.sensores.presenca
+
+  dispositivo.sensores.rele =
+    req.body.sensores?.rele ?? dispositivo.sensores.rele
+
+  res.status(200).send({
+    code: 200,
+    msg: "Dispositivo atualizado com sucesso!",
+    dispositivo
+  })
 })
 
 api.delete("/dispositivos/:id", (req, res) => {
@@ -171,6 +217,10 @@ api.delete("/dispositivos/:id", (req, res) => {
     msg: "Dispositivo deletado com sucesso!"
   })
 })
+
+// =========================
+// 💡 RELÉ
+// =========================
 
 api.post("/rele", (req, res) => {
   const { id, status } = req.body
@@ -198,6 +248,10 @@ api.post("/rele", (req, res) => {
     dispositivo
   })
 })
+
+// =========================
+// 🌐 CONEXÃO
+// =========================
 
 api.post("/conexao", (req, res) => {
   const { id, status } = req.body

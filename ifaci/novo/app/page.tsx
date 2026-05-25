@@ -10,10 +10,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neutral-900 text-gray-200">
-
       <Header />
 
-      {/* 🔝 TOPO */}
       <div className="w-full border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-lg tracking-wide font-semibold">
@@ -29,12 +27,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 📦 CONTEÚDO CENTRAL */}
       <div className="max-w-7xl mx-auto px-6 py-6">
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          {/* ➕ CRIAR USUÁRIO */}
           <div className="bg-neutral-800 border border-gray-700 p-5 rounded-xl shadow overflow-hidden">
             <h2 className="text-sm text-gray-400 mb-4">
               CRIAR USUÁRIO
@@ -45,7 +40,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 📋 LISTAR USUÁRIOS */}
           <div className="bg-neutral-800 border border-gray-700 p-5 rounded-xl shadow overflow-hidden">
             <h2 className="text-sm text-gray-400 mb-4">
               USUÁRIOS CADASTRADOS
@@ -57,7 +51,6 @@ export default function Home() {
           </div>
 
         </div>
-
       </div>
     </div>
   )
