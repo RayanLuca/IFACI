@@ -1,378 +1,275 @@
-# 📘 Plano de Ensino – Interfaces Industriais
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/SENAI_S%C3%A3o_Paulo_logo.png" alt="Logo SENAI" width="400">
+</p>
 
-**Carga horária:** 80 horas  
-**Distribuição:** 20 aulas semanais – 4h por aula  
-**Modalidade:** Presencial / Laboratório  
-**Professor:** Gabriel Claro  
+<br><br>
 
----
+<p align="center">
+  <strong>SERVIÇO NACIONAL DE APRENDIZAGEM INDUSTRIAL – SENAI</strong>
+</p>
 
-## 🎯 Objetivo Geral da Disciplina
+<br><br><br>
 
-Capacitar o aluno a projetar e implementar um sistema supervisório Web aplicado a ambientes industriais, integrando controladores lógicos programáveis por meio do protocolo OPC-UA. A disciplina contempla o uso de middleware, backend e front-end Web, com foco em arquitetura de sistemas, comunicação industrial, alarmística, históricos e desenvolvimento de interfaces IHM de alta performance.
+<p align="center">
+  <strong>Sistema Web para Monitoramento e Controle de Dispositivos IoT.</strong>
+</p>
 
----
+<h1 align="center">IFACI</h1>
 
-## 🧠 Competências Desenvolvidas
 
-Ao final da disciplina, o aluno será capaz de:
 
-- Projetar arquiteturas de sistemas supervisórios baseados em Web;
-- Integrar sistemas industriais utilizando OPC-UA e middleware;
-- Implementar backend para aquisição, tratamento e armazenamento de dados industriais;
-- Desenvolver aplicações Web voltadas à supervisão em tempo real;
-- Implementar alarmes, históricos e gráficos de tendência;
-- Projetar interfaces IHM seguindo os princípios da norma ISA-101.
+<br><br><br>
 
----
+>
 
-## 🗂️ Organização Geral do Semestre
+<br><br><br><br>
 
-O semestre está estruturado em 4 grandes módulos:
+<p align="center">
+  Sorocaba-SP<br>
+  2026
+</p>
 
-1. **Fundamentos Avançados de Desenvolvimento Web Aplicado** — Aulas 1 a 4;
-2. **Arquitetura de Sistemas Supervisórios e Comunicação Industrial** — Aulas 5 a 9;
-3. **Backend, Middleware, Alarmes e Históricos** — Aulas 10 a 14;
-4. **Interfaces IHM e Sistemas Supervisórios** — Aulas 15 a 20.
+# SISTEMA WEB PARA MONITORAMENTO E CONTROLE DE DISPOSITIVOS IoT UTILIZANDO NODE.JS E NEXT.JS
 
 ---
 
-## 📅 Cronograma Detalhado das Aulas
+# 1 INTRODUÇÃO
+
+Com o avanço da Indústria 4.0 e da Internet das Coisas (IoT), tornou-se cada vez mais importante o desenvolvimento de aplicações capazes de monitorar equipamentos e sensores em tempo real. A integração entre dispositivos inteligentes e sistemas web permite maior controle operacional, automação e acompanhamento remoto de processos industriais.
+
+Neste contexto, foi desenvolvido um sistema web para monitoramento e gerenciamento de dispositivos IoT, permitindo o controle remoto de sensores e atuadores através de uma interface moderna e responsiva.
+
+O sistema desenvolvido possui funcionalidades de:
+
+- Cadastro e gerenciamento de usuários;
+- Monitoramento de dispositivos industriais;
+- Controle de relés;
+- Alteração de status online/offline;
+- Atualização de sensores em tempo real;
+- Dashboard industrial responsivo.
+
+A aplicação foi desenvolvida utilizando Node.js no backend e Next.js no frontend, utilizando comunicação baseada em API REST.
 
 ---
 
-# 🔹 MÓDULO 1 – Desenvolvimento Web Aplicado a Sistemas Supervisórios
+# 2 OBJETIVO
 
-**Aulas 1 a 4**  
-Revisão em nível intermediário/avançado, com foco em aplicações industriais.
+O objetivo deste trabalho consiste em desenvolver uma aplicação web capaz de monitorar e controlar dispositivos IoT em tempo real, oferecendo uma interface moderna para gerenciamento industrial.
 
----
+Além disso, busca-se aplicar conceitos de:
 
-## 📍 Aula 1 – Apresentação da Disciplina e Introdução a Sistemas Supervisórios Web
-
-### Conteúdos
-
-- Apresentação da disciplina e do projeto final;
-- Revisão dos conceitos de sistemas supervisórios: SCADA, IHM e IIoT;
-- Diferenças entre sistemas supervisórios tradicionais e supervisórios Web;
-- Arquitetura geral do projeto do semestre.
-
-### Atividade prática
-
-- Análise de arquiteturas reais de sistemas supervisórios Web;
-- Definição dos grupos e escolha do processo a ser simulado.
+- Desenvolvimento Full Stack;
+- APIs REST;
+- IoT;
+- Monitoramento industrial;
+- Integração frontend/backend;
+- Atualização dinâmica de dados.
 
 ---
 
-## 📍 Aula 2 – Arquitetura de Aplicações Web para Sistemas em Tempo Real
+# 3 TECNOLOGIAS UTILIZADAS
 
-### Conteúdos
+## 3.1 Backend
 
-- Arquitetura cliente-servidor aplicada à supervisão;
-- REST, WebSockets e comunicação em tempo real;
-- Separação de responsabilidades entre front-end, backend e middleware;
-- Boas práticas para aplicações críticas.
+O backend da aplicação foi desenvolvido utilizando:
 
-### Atividade prática
+- Node.js;
+- Express;
+- Cors;
+- JavaScript.
 
-- Criação da estrutura inicial do projeto: front-end e backend;
-- Testes de comunicação em tempo real entre front-end e backend.
-
----
-
-## 📍 Aula 3 – Backend para Aquisição e Distribuição de Dados Industriais
-
-### Conteúdos
-
-- Padrões de API para sistemas supervisórios;
-- Gerenciamento de estados e dados em tempo real;
-- Cache, filas e tratamento de latência;
-- Organização de serviços para alarmes e históricos.
-
-### Atividade prática
-
-- Implementação de uma API básica de dados em tempo real;
-- Simulação de variáveis de processo no backend.
+A API REST foi responsável pelo gerenciamento dos usuários e dispositivos industriais.
 
 ---
 
-## 📍 Aula 4 – Front-end Avançado para Monitoramento em Tempo Real
+## 3.2 Frontend
 
-### Conteúdos
+O frontend foi desenvolvido utilizando:
 
-- Gerenciamento de estado: Redux, Context, entre outros;
-- Componentização para aplicações industriais;
-- Renderização eficiente de dados em tempo real;
-- Introdução a dashboards industriais.
+- Next.js;
+- React;
+- Tailwind CSS;
+- TypeScript.
 
-### Atividade prática
-
-- Construção de um dashboard Web simples com dados simulados.
+A interface foi construída com foco em responsividade, organização visual e experiência do usuário.
 
 ---
 
-# 🔹 MÓDULO 2 – Arquitetura Supervisória e Comunicação Industrial
+# 4 FUNCIONALIDADES DO SISTEMA
 
-**Aulas 5 a 9**
+## 4.1 Gerenciamento de Usuários
 
----
+O sistema permite:
 
-## 📍 Aula 5 – Arquitetura de Sistemas Supervisórios
+- Criar usuários;
+- Atualizar usuários;
+- Excluir usuários;
+- Listar usuários cadastrados.
 
-### Conteúdos
+As operações são realizadas através dos métodos HTTP:
 
-- Componentes de um sistema supervisório;
-- Servidor de dados, clientes, viewers e bancos históricos;
-- Arquiteturas centralizadas e distribuídas;
-- Introdução ao projeto final.
-
-### Atividade prática
-
-- Elaboração do diagrama de arquitetura do projeto do grupo.
-
----
-
-## 📍 Aula 6 – Protocolos Industriais e Comunicação Ethernet
-
-### Conteúdos
-
-- Protocolos industriais Ethernet;
-- Conceitos de cliente, servidor e publicador;
-- Introdução ao OPC-UA;
-- Segurança em comunicação industrial.
-
-### Atividade prática
-
-- Configuração de um servidor OPC-UA simulado.
+| Método | Endpoint | Função |
+|---|---|---|
+| GET | /usuarios | Listar usuários |
+| POST | /novoUsuario | Criar usuário |
+| PUT | /usuarios/:id | Atualizar usuário |
+| DELETE | /usuarios/:id | Remover usuário |
 
 ---
 
-## 📍 Aula 7 – OPC-UA na Prática
+## 4.2 Gerenciamento de Dispositivos
 
-### Conteúdos
+O sistema também permite o gerenciamento dos dispositivos IoT.
 
-- Estrutura de nós, variáveis e métodos;
-- Leitura e escrita de variáveis;
-- Monitoramento de eventos;
-- Boas práticas de modelagem OPC-UA.
+Cada dispositivo possui:
 
-### Atividade prática
+- Nome;
+- Status online/offline;
+- Temperatura;
+- Pressão;
+- Umidade;
+- Presença;
+- Estado do relé.
 
-- Leitura de dados de um servidor OPC-UA por meio de um cliente.
+Os métodos implementados foram:
 
----
-
-## 📍 Aula 8 – Middleware Industrial com Node-RED
-
-### Conteúdos
-
-- Conceito de middleware industrial;
-- Arquitetura do Node-RED;
-- Fluxos de aquisição, tratamento e roteamento de dados;
-- Integração entre OPC-UA e APIs.
-
-### Atividade prática
-
-- Criação de fluxos Node-RED para aquisição OPC-UA e envio ao backend.
+| Método | Endpoint | Função |
+|---|---|---|
+| GET | /dispositivos | Listar dispositivos |
+| POST | /dispositivos | Criar dispositivo |
+| PUT | /dispositivos/:id | Atualizar dispositivo |
+| DELETE | /dispositivos/:id | Remover dispositivo |
 
 ---
 
-## 📍 Aula 9 – Integração Completa: OPC-UA → Node-RED → Backend
+# 5 DASHBOARD INDUSTRIAL
 
-### Conteúdos
+O dashboard industrial foi desenvolvido para permitir visualização em tempo real dos dispositivos conectados.
 
-- Tratamento de dados industriais;
-- Normalização e filtragem;
-- Gerenciamento de falhas de comunicação;
-- Monitoramento da cadeia de dados.
+Cada card apresenta:
 
-### Atividade prática
+- Temperatura atual;
+- Pressão;
+- Umidade;
+- Presença detectada;
+- Estado do relé;
+- Status online/offline.
 
-- Implementação do pipeline completo funcionando com dados reais ou simulados.
+Além disso, o sistema permite:
 
----
-
-# 🔹 MÓDULO 3 – Backend Supervisório: Alarmes, Históricos e Banco de Dados
-
-**Aulas 10 a 14**
-
----
-
-## 📍 Aula 10 – Integração com Banco de Dados para Sistemas Supervisórios
-
-### Conteúdos
-
-- Modelagem de dados industriais;
-- Tabelas de variáveis, históricos e alarmes;
-- Estratégias de armazenamento em tempo real.
-
-### Atividade prática
-
-- Criação do banco de dados do projeto.
+- Ligar/desligar relés;
+- Alterar conexão;
+- Atualizar dispositivos;
+- Remover dispositivos.
 
 ---
 
-## 📍 Aula 11 – Implementação de Históricos de Processo
+# 6 SIMULAÇÃO DOS SENSORES
 
-### Conteúdos
+Para simular um ambiente industrial real, foi implementado um sistema automático de atualização dos sensores utilizando `setInterval()`.
 
-- Conceito de históricos: process historian;
-- Estratégias de amostragem;
-- Consultas por intervalo de tempo.
+Os sensores geram valores aleatórios de:
 
-### Atividade prática
+- Temperatura;
+- Pressão;
+- Umidade;
+- Presença.
 
-- Armazenamento contínuo de variáveis no banco.
-
----
-
-## 📍 Aula 12 – Alarmística Industrial
-
-### Conteúdos
-
-- Conceitos de alarme, evento e condição;
-- Tipos de alarmes e prioridades;
-- Reconhecimento de alarmes;
-- Boas práticas de alarmística.
-
-### Atividade prática
-
-- Implementação de alarmes no backend e no Node-RED.
+A atualização ocorre automaticamente a cada 3 segundos.
 
 ---
 
-## 📍 Aula 13 – Segurança e Controle de Acesso
+# 7 ARQUITETURA DO SISTEMA
 
-### Conteúdos
+A aplicação foi desenvolvida utilizando arquitetura cliente-servidor.
 
-- Autenticação e autorização em sistemas supervisórios;
-- Perfis de operador e supervisor;
-- Logs e auditoria.
+## Estrutura:
 
-### Atividade prática
+- Frontend → Next.js;
+- Backend → Node.js + Express;
+- Comunicação → API REST;
+- Dados → Objetos JSON.
 
-- Implementação de login e níveis de usuário no projeto.
-
----
-
-## 📍 Aula 14 – Gráficos de Tendência e Visualização Histórica
-
-### Conteúdos
-
-- Tipos de gráficos industriais;
-- Performance na visualização de grandes volumes de dados;
-- Filtros e escalas.
-
-### Atividade prática
-
-- Implementação da tela de históricos com gráficos.
+O frontend realiza requisições HTTP para a API utilizando os métodos REST.
 
 ---
 
-# 🔹 MÓDULO 4 – Interfaces IHM e Sistemas Supervisórios
+# 8 INTERFACE DO SISTEMA
 
-**Aulas 15 a 20**  
-Parte final focada especificamente em IHM.
+## 8.1 Painel Administrativo
 
----
+O painel administrativo possui:
 
-## 📍 Aula 15 – Introdução às Interfaces Homem-Máquina
+- Cadastro de usuários;
+- Atualização de usuários;
+- Exclusão de usuários;
+- Visualização de dados.
 
-### Conteúdos
-
-- Conceitos de IHM;
-- Diferença entre IHM, SCADA e supervisório Web;
-- Papel do operador e do supervisor;
-- Erros comuns em IHMs.
-
-### Atividade prática
-
-- Análise crítica de telas industriais reais.
+A interface utiliza tema escuro inspirado em dashboards industriais modernos.
 
 ---
 
-## 📍 Aula 16 – IHM de Alta Performance – Norma ISA-101
+## 8.2 Dashboard de Dispositivos
 
-### Conteúdos
+O dashboard exibe os dispositivos em tempo real através de cards industriais responsivos.
 
-- Princípios da ISA-101;
-- Uso correto de cores;
-- Hierarquia de telas;
-- Destaque de alarmes e situações anormais.
-
-### Atividade prática
-
-- Redesenho conceitual das telas do projeto.
+Cada card apresenta informações detalhadas dos sensores e controles rápidos para gerenciamento dos dispositivos.
 
 ---
 
-## 📍 Aula 17 – Telas de Operação: Modo Manual e Modo Automático
+# 9 RESULTADOS OBTIDOS
 
-### Conteúdos
+Os testes realizados demonstraram que o sistema apresentou:
 
-- Estados de processo;
-- Intertravamentos e permissivos;
-- Indicação visual dos modos de operação.
+- Comunicação eficiente entre frontend e backend;
+- Atualização dinâmica dos sensores;
+- Controle remoto funcional;
+- Interface intuitiva;
+- Boa organização estrutural do código.
 
-### Atividade prática
-
-- Implementação das telas de modo manual e automático.
-
----
-
-## 📍 Aula 18 – Telas de Alarmes e Diagnóstico
-
-### Conteúdos
-
-- Layout de telas de alarmes;
-- Navegação e filtros;
-- Boas práticas de diagnóstico operacional.
-
-### Atividade prática
-
-- Implementação da tela de alarmes no front-end.
+A utilização do React e Next.js proporcionou uma experiência moderna e dinâmica para o usuário.
 
 ---
 
-## 📍 Aula 19 – Telas de Históricos, Gráficos e Dashboards Supervisórios
+# 10 CONCLUSÃO
 
-### Conteúdos
+Conclui-se que o sistema desenvolvido atingiu os objetivos propostos, fornecendo uma solução funcional para monitoramento e gerenciamento de dispositivos IoT.
 
-- Layout de telas de tendência;
-- Dashboards operacionais e gerenciais;
-- Performance e usabilidade.
+A integração entre Node.js, Express e Next.js possibilitou o desenvolvimento de uma aplicação organizada, responsiva e escalável.
 
-### Atividade prática
+O projeto também permitiu aplicar conceitos importantes relacionados à Indústria 4.0, APIs REST e desenvolvimento Full Stack.
 
-- Finalização das telas de históricos e dashboards.
+Como melhorias futuras, pretende-se implementar:
 
----
-
-## 📍 Aula 20 – Apresentação Final dos Projetos
-
-### Conteúdos
-
-- Demonstração completa dos sistemas;
-- Avaliação técnica e funcional;
-- Feedback final.
-
-### Atividade prática
-
-- Apresentação e entrega final do projeto.
+- Banco de dados MySQL;
+- Autenticação JWT;
+- Integração MQTT;
+- Deploy em nuvem AWS;
+- Histórico de sensores;
+- Gráficos em tempo real.
 
 ---
 
-## 📝 Avaliação da Disciplina
+# 11 DIAGRAMA DO SISTEMA
 
-- **Projeto final de sistema supervisório Web:** 70%;
-- **Entregas parciais e atividades práticas:** 20%;
-- **Participação e envolvimento em aula:** 10%.
+<img width="1536" height="1024" alt="Dashboard Industrial IoT" src="https://github.com/user-attachments/assets/cf62393b-9b67-4d2f-afeb-8b92354bc34f" />
 
 ---
 
-## 📚 Bibliografia Básica
+# 12 REFERÊNCIAS
 
-- ISA-101 – *Human Machine Interfaces for Process Automation Systems*;
-- Boyer, S. A. – *SCADA: Supervisory Control and Data Acquisition*;
-- OPC Foundation – *OPC UA Specifications*;
-- Documentação oficial do Node-RED.
+https://nodejs.org/;
+
+https://nextjs.org/;
+
+https://expressjs.com/pt-br/;
+
+https://react.dev/;
+
+https://tailwindcss.com/;
+
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods;
+
+https://aws.amazon.com/what-is/iot/;
+
+https://developer.mozilla.org/pt-BR/docs/Web/JavaScript.
