@@ -1,0 +1,143 @@
+\documentclass[12pt]{unisenaiclass}
+\usepackage{unisenaistyle}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{csquotes}
+\usepackage[backend=biber, style=abnt]{biblatex}
+\addbibresource{referencias.bib}
+
+\title{Sistema Web para Monitoramento e Controle de Dispositivos IoT - IFACI}
+\subtitle{Web System for Monitoring and Controlling IoT Devices - IFACI}
+
+\author{
+    \textbf{Rayan Luca Teixeira} \thanks{}\\
+    \textbf{} \thanks{}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{resumo}
+Este artigo apresenta o desenvolvimento de uma aplicação web para monitoramento e controle de dispositivos IoT. O sistema foi desenvolvido utilizando backend em Node.js com Express e frontend em Next.js, permitindo o cadastro de usuários, gerenciamento de dispositivos, controle de relés e acompanhamento de sensores em tempo real. A aplicação utiliza uma API REST para comunicação entre as camadas do sistema, possibilitando operações de criação, leitura, atualização e exclusão de usuários e dispositivos. Os resultados demonstram que a solução é funcional para ambientes de automação e monitoramento industrial.
+\end{resumo}
+
+\begin{justify}
+    \textbf{Palavras-chave:} IoT; API REST; Node.js; Next.js; Sensores; Automação.
+\end{justify}
+
+\begin{abstract1}
+This paper presents the development of a web application for monitoring and controlling IoT devices. The system was developed using a Node.js backend with Express and a Next.js frontend, allowing user registration, device management, relay control, and real-time sensor monitoring. The application uses a REST API to communicate between system layers, enabling create, read, update, and delete operations for users and devices. The results show that the solution is functional for automation and industrial monitoring environments.
+\end{abstract1}
+
+\begin{justify}
+    \textbf{Keywords:} IoT; REST API; Node.js; Next.js; Sensors; Automation.
+\end{justify}
+
+\section{Introdução}
+
+A Internet das Coisas (IoT) tem se tornado uma das principais tecnologias aplicadas em ambientes industriais, residenciais e comerciais. Por meio dela, dispositivos físicos podem se conectar a sistemas computacionais, permitindo coleta de dados, automação e controle remoto.
+
+Nesse contexto, o presente trabalho apresenta o desenvolvimento do sistema IFACI, uma aplicação web voltada ao monitoramento e controle de dispositivos IoT. A solução permite visualizar informações de sensores, alterar o estado dos dispositivos, controlar relés e gerenciar usuários por meio de uma interface moderna.
+
+\section{Revisão de Literatura}
+
+A Internet das Coisas pode ser compreendida como a conexão de objetos físicos à internet, permitindo que sensores, atuadores e sistemas digitais troquem informações em tempo real. Em aplicações industriais, essa tecnologia contribui para o monitoramento de processos, automação e tomada de decisão.
+
+As APIs REST são utilizadas para permitir a comunicação entre diferentes sistemas por meio do protocolo HTTP. Métodos como GET, POST, PUT e DELETE possibilitam a consulta, criação, atualização e remoção de dados.
+
+O Node.js é uma tecnologia amplamente utilizada no desenvolvimento backend, principalmente em aplicações que exigem comunicação rápida e assíncrona. Já o Next.js, baseado em React, permite a criação de interfaces web modernas, responsivas e componentizadas.
+
+\section{Metodologia}
+
+O sistema foi desenvolvido em duas camadas principais:
+
+\begin{itemize}
+    \item \textbf{Backend:} desenvolvido com Node.js, Express e Cors, responsável pela criação da API REST.
+    \item \textbf{Frontend:} desenvolvido com Next.js, React, TypeScript e Tailwind CSS, responsável pela interface gráfica.
+\end{itemize}
+
+A API criada permite gerenciar usuários e dispositivos, além de controlar estados como conexão online/offline e acionamento de relé.
+
+\section{Desenvolvimento do Sistema}
+
+O sistema possui funcionalidades de cadastro, listagem, atualização e exclusão de usuários. Além disso, permite o gerenciamento completo dos dispositivos IoT.
+
+\subsection{Gerenciamento de Usuários}
+
+\begin{table}[H]
+    \centering
+    \caption{Rotas para gerenciamento de usuários}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Método & Endpoint & Função \\ \hline
+        GET & /usuarios & Listar usuários \\ \hline
+        POST & /novoUsuario & Criar usuário \\ \hline
+        PUT & /usuarios/:id & Atualizar usuário \\ \hline
+        DELETE & /usuarios/:id & Remover usuário \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Gerenciamento de Dispositivos}
+
+Cada dispositivo possui nome, status, temperatura, pressão, umidade, presença e estado do relé.
+
+\begin{table}[H]
+    \centering
+    \caption{Rotas para gerenciamento de dispositivos}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Método & Endpoint & Função \\ \hline
+        GET & /dispositivos & Listar dispositivos \\ \hline
+        POST & /dispositivos & Criar dispositivo \\ \hline
+        PUT & /dispositivos/:id & Atualizar dispositivo \\ \hline
+        DELETE & /dispositivos/:id & Remover dispositivo \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{Resultados e Discussões}
+
+O sistema desenvolvido apresentou funcionamento adequado para o monitoramento e controle dos dispositivos cadastrados. O dashboard permite acompanhar os sensores em tempo real e executar comandos diretamente pela interface.
+
+\begin{table}[H]
+    \centering
+    \caption{Exemplo de dados monitorados}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Sensor & Valor Atual & Unidade \\ \hline
+        Temperatura & 25 & °C \\ \hline
+        Umidade & 60 & \% \\ \hline
+        Pressão & 1.0 & hPa \\ \hline
+        Presença & Não detectada & - \\ \hline
+        Relé & OFF & - \\ \hline
+    \end{tabular}
+\end{table}
+
+Entre os principais resultados obtidos, destacam-se:
+
+\begin{itemize}
+    \item Criação de uma API REST funcional;
+    \item Integração entre frontend e backend;
+    \item Controle de dispositivos pelo dashboard;
+    \item Atualização automática dos sensores;
+    \item Interface responsiva e intuitiva.
+\end{itemize}
+
+\section{Conclusão}
+
+O projeto demonstrou a viabilidade de desenvolver uma aplicação web para monitoramento e controle de dispositivos IoT. A integração entre Node.js, Express e Next.js permitiu criar uma solução funcional, organizada e expansível.
+
+Como melhorias futuras, pretende-se implementar banco de dados, autenticação de usuários, integração MQTT, deploy em nuvem e gráficos em tempo real para análise dos sensores.
+
+\section*{Agradecimentos}
+
+Agradeço ao SENAI e aos professores que contribuíram para o desenvolvimento deste projeto.
+
+\printbibliography
+
+\end{document}
